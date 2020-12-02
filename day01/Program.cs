@@ -39,6 +39,7 @@ namespace day01
                     Console.WriteLine($"");
                     Console.WriteLine($"Integers discovered in {file.Name}: {values.Count}");
 
+                    // Naive solution
                     Console.WriteLine($"");
                     Console.WriteLine("Executing NaiveSolution");
                     using (new ConsoleStopWatch())
@@ -46,12 +47,14 @@ namespace day01
                         solution = NaiveSolution(values, sum);
                     }
 
-                    foreach (var obj in solution.SelectMany(l => l.Select(o => o)))
+                    foreach (var pair in solution)
                     {
-                        Console.WriteLine(obj);
+                        var subset = String.Join(", ", pair);
+                        var multiply = pair[0] * pair[1];
+                        Console.WriteLine($"{subset}, multiplying to {multiply}");
                     }
 
-
+                    // Hash Table solution
                     Console.WriteLine($"");
                     Console.WriteLine("Executing HashTableSolution");
                     using (new ConsoleStopWatch())
@@ -59,9 +62,11 @@ namespace day01
                         solution = HashTableSolution(values, sum);
                     }
 
-                    foreach (var obj in solution.SelectMany(l => l.Select(o => o)))
+                    foreach (var pair in solution)
                     {
-                        Console.WriteLine(obj);
+                        var subset = String.Join(", ", pair);
+                        var multiply = pair[0] * pair[1];
+                        Console.WriteLine($"{subset}, multiplying to {multiply}");
                     }
                 });
 
@@ -90,6 +95,8 @@ namespace day01
             {
                 for (int j = 0; j < values.Count; j++)
                 {
+                    if (i == j) continue;
+
                     if (values.ElementAt(i) + values.ElementAt(j) == sum)
                     {
                         result.Add(new List<int>

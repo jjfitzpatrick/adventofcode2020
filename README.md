@@ -8,4 +8,4 @@ Eventually I hope to add a wrapper around each app or combine them as libraries 
 
 TODOs
 
-[ ] Create [template](https://weblog.west-wind.com/posts/2020/Oct/05/Creating-a-dotnet-new-Project-Template) project
+- Create [template](https://weblog.west-wind.com/posts/2020/Oct/05/Creating-a-dotnet-new-Project-Template) project
